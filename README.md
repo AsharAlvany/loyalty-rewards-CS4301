@@ -1,1 +1,1 @@
-# loyalry-rewards-CS4301
+# loyalty-rewards-CS4301
