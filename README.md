@@ -1,5 +1,24 @@
 # loyalty-rewards-CS4301
 
+## TODO
+
+- [X] Setup Blockchain Environment (Hardhat)
+- [X] Design Smart Contract Structure (Solidity)
+- [ ] Create API for Smart Contract Transactions (Ether.js)
+- [ ] Create Front-End to use API (React)
+
+---
+
+## Platforms and Technologies
+| Platform | Usage |
+| --- | --- |
+| Hardhat | Ethereum Development Environment |
+| Etherjs | Ethereum Blockchain Development |
+| Solidity | Smart Contract Programming Language |
+| React | Framework for Front-End Design |
+
+---
+
 ## Use Cases
 
 #### Register User
@@ -29,3 +48,10 @@
 3. Fork
     a. Success: the points are removed from the user's profile, and a success message is shown
     b. Failure: the points are not able to be removed from the user's profile, and a failure message is shown
+
+---
+
+## Functional Requirements
+
+- The system must allow admins to create new users
+- The system must allow admins to update (increment/decrement) users
