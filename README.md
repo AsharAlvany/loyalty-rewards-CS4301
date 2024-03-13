@@ -4,7 +4,8 @@
 
 - [X] Setup Blockchain Environment (Hardhat)
 - [X] Design Smart Contract Structure (Solidity)
-- [ ] Create API for Smart Contract Transactions (Ether.js)
+- [X] Create API for Smart Contract Transactions (Ether.js)
+- [X] Create API endpoints for Front-End to Utilize (Node.js)
 - [ ] Create Front-End to use API (React)
 
 ---
@@ -14,6 +15,7 @@
 | --- | --- |
 | Hardhat | Ethereum Development Environment |
 | Etherjs | Ethereum Blockchain Development |
+| Nodejs | API Development (FE -> Blockchain Comms) |
 | Solidity | Smart Contract Programming Language |
 | React | Framework for Front-End Design |
 

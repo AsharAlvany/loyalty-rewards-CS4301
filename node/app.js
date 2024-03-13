@@ -1,0 +1,102 @@
+const ethers = require("ethers");
+const express = require("express");
+const app = express();
+const fs = require("fs");
+
+const file = fs.readFileSync("artifacts/contracts/CryptoPoints.sol/CryptoPoints.json", "utf8")
+const json = JSON.parse(file)
+const ABI = json.abi
+
+async function getPoints(user){
+    const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    const provider = new ethers.WebSocketProvider(
+        `ws://localhost:8545`
+    );
+    const contract = new ethers.Contract(usdcAddress, ABI, provider);
+    return contract.getPoints(`${user}`);
+}
+
+async function getUsers(){
+    const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    const provider = new ethers.WebSocketProvider(
+        `ws://localhost:8545`
+    );
+    const contract = new ethers.Contract(usdcAddress, ABI, provider);
+    return contract.getUsers();
+}
+
+async function awardPoints(user, amount){
+    const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    const provider = new ethers.WebSocketProvider(
+        `ws://localhost:8545`
+    );
+    const signer = (await provider.getSigner());
+    const contract = new ethers.Contract(usdcAddress, ABI, signer);
+    contract.awardPoints(`${user}`, amount);
+}
+
+async function redeemPoints(user, amount){
+    const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    const provider = new ethers.WebSocketProvider(
+        `ws://localhost:8545`
+    );
+    const signer = (await provider.getSigner());
+    const contract = new ethers.Contract(usdcAddress, ABI, signer);
+    contract.redeemPoints(`${user}`, amount);
+}
+
+async function createUser(user){
+    const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    const provider = new ethers.WebSocketProvider(
+        `ws://localhost:8545`
+    );
+    const signer = (await provider.getSigner());
+    const contract = new ethers.Contract(usdcAddress, ABI, signer);
+    contract.createUser(`${user}`);
+}
+
+server = app.listen(3000, function () {
+    let host = server.address().address;
+    let port = server.address().port;
+}); 
+
+// returns the points of the user in the response variable
+app.get("/getPoints/:user", async function(req, res){
+    getPoints(req.params.user).then((response) => {
+        console.log(response);
+        res.send("Success");
+    })
+})
+app.get("/getUsers", async function(req, res){
+    getUsers().then((response) => {
+        console.log(response);
+        res.send("Success");
+    })
+})
+app.get("/awardPoints/:user/:points", async function(req, res){
+    awardPoints(req.params.user, req.params.points).then(() => {
+        // console.log(response);
+        res.send("Success");
+    }).catch((err)=>{
+        console.log(err);
+        res.send("Error");
+    })
+})
+app.get("/redeemPoints/:user/:points", async function(req, res){
+    redeemPoints(req.params.user, req.params.points).then(() => {
+        // console.log(response);
+        res.send("Success");
+    }).catch((err)=>{
+        console.log(err);
+        res.send("Error");
+    })
+})
+app.get("/createUser/:user", async function(req, res){
+    createUser(req.params.user).then(() => {
+        // console.log(response);
+        res.send("Success");
+    }).catch((err)=>{
+        console.log(err);
+        res.send("Error");
+    })
+})
