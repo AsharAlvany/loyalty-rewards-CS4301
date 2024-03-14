@@ -2,6 +2,15 @@ const ethers = require("ethers");
 const express = require("express");
 const app = express();
 const fs = require("fs");
+const cors=require("cors");
+const { type } = require("node:os");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions))
 
 const file = fs.readFileSync("artifacts/contracts/CryptoPoints.sol/CryptoPoints.json", "utf8")
 const json = JSON.parse(file)
@@ -62,20 +71,24 @@ server = app.listen(3030, function () {
 
 // returns the points of the user in the response variable
 app.get("/getPoints/:user", async function(req, res){
-    getPoints(req.params.user).then((response) => {
+    getPoints(req.params.user).then((resp) =>{
+        return resp.toString();
+    }).then((response) => {
         console.log(response);
-        res.send("Success");
+        res.send(response);
     })
 })
 app.get("/getUsers", async function(req, res){
-    getUsers().then((response) => {
+    getUsers().then((resp) =>{
+        return JSON.stringify(resp);
+    }).then((response) => {
         console.log(response);
-        res.send("Success");
+        res.send(response);
     })
 })
 app.get("/awardPoints/:user/:points", async function(req, res){
-    awardPoints(req.params.user, req.params.points).then(() => {
-        // console.log(response);
+    awardPoints(req.params.user, req.params.points).then((response) => {
+        console.log(response);
         res.send("Success");
     }).catch((err)=>{
         console.log(err);
@@ -83,8 +96,8 @@ app.get("/awardPoints/:user/:points", async function(req, res){
     })
 })
 app.get("/redeemPoints/:user/:points", async function(req, res){
-    redeemPoints(req.params.user, req.params.points).then(() => {
-        // console.log(response);
+    redeemPoints(req.params.user, req.params.points).then((response) => {
+        console.log(response);
         res.send("Success");
     }).catch((err)=>{
         console.log(err);
@@ -92,8 +105,8 @@ app.get("/redeemPoints/:user/:points", async function(req, res){
     })
 })
 app.get("/createUser/:user", async function(req, res){
-    createUser(req.params.user).then(() => {
-        // console.log(response);
+    createUser(req.params.user).then((response) => {
+        console.log(response);
         res.send("Success");
     }).catch((err)=>{
         console.log(err);
