@@ -15,6 +15,14 @@
 
 ---
 
+## Known Bugs
+
+- Don't redeem points a user does not have, please (fix: I don't wanna)
+- Don't create a user that already exists (fix: the user can't be that stupid?)
+- The FE is ugly (fix: no, you 🙃 )
+
+---
+
 ## TODO
 
 - [X] Setup Blockchain Environment (Hardhat)
@@ -22,7 +30,7 @@
 - [X] Create API for Smart Contract Transactions (Ether.js)
 - [X] Create API endpoints for Front-End to Utilize (Node.js)
 - [X] Create Front-End to use API (React)
-- [ ] Connect Front-End and Backend (API)
+- [X] Connect Front-End and Backend (API)
 
 ---
 
