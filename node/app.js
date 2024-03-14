@@ -55,7 +55,7 @@ async function createUser(user){
     contract.createUser(`${user}`);
 }
 
-server = app.listen(3000, function () {
+server = app.listen(3030, function () {
     let host = server.address().address;
     let port = server.address().port;
 }); 

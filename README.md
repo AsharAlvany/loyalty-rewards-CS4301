@@ -1,5 +1,20 @@
 # loyalty-rewards-CS4301
 
+## How to Use
+
+1. Start Blockchain with
+`npx hardhat node`
+2. Deploy the smart contract to the blockchain using
+`npx hardhat run --network localhost scripts/deploy.js`
+3. Step 2 will output the address of the deployed Smart Contract, make sure `node/app.js` has the same address in line 11
+4. Run the backend service with
+`node node/app.js`
+5. Begin the front-end react environment in the `react` folder within the using
+`npm start` 
+6. Navigate to `http://localhost:3000` and interact with the front-end
+
+---
+
 ## TODO
 
 - [X] Setup Blockchain Environment (Hardhat)
@@ -56,4 +71,4 @@
 ## Functional Requirements
 
 - The system must allow admins to create new users
-- The system must allow admins to update (increment/decrement) users
+- The system must allow admins to update (increment/decrement) users points
