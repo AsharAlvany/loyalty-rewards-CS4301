@@ -21,7 +21,8 @@
 - [X] Design Smart Contract Structure (Solidity)
 - [X] Create API for Smart Contract Transactions (Ether.js)
 - [X] Create API endpoints for Front-End to Utilize (Node.js)
-- [ ] Create Front-End to use API (React)
+- [X] Create Front-End to use API (React)
+- [ ] Connect Front-End and Backend (API)
 
 ---
 
