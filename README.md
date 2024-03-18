@@ -1,15 +1,28 @@
 # loyalty-rewards-CS4301
 
+## How to Compile
+
+1. Install/clone the project
+2. Open in VSCode
+3. (Make sure to have node.js installed)
+4. Open your VSCode terminal into the root of the folder
+5. Run `npm install --force`
+6. Do into the react directory `cd react` and install those npm modules `npm install`
+7. Go back to the root directory `cd ..`
+8. Move on to "How to Use"
+
+---
+
 ## How to Use
 
 1. Start Blockchain with
 `npx hardhat node`
-2. Deploy the smart contract to the blockchain using
+2. Open a new terminal and deploy the smart contract to the blockchain using
 `npx hardhat run --network localhost scripts/deploy.js`
-3. Step 2 will output the address of the deployed Smart Contract, make sure `node/app.js` has the same address in line 11
+3. Step 2 will output the address of the deployed Smart Contract, make sure `node/server.js` has the same address in line 11
 4. Run the backend service with
-`node node/app.js`
-5. Begin the front-end react environment in the `react` folder within the using
+`node node/server.js`
+5. In a new terminal begin the front-end react environment in the `react` folder within the using
 `npm start` 
 6. Navigate to `http://localhost:3000` and interact with the front-end
 
@@ -17,9 +30,9 @@
 
 ## Known Bugs
 
-- Don't redeem points a user does not have, please (fix: I don't wanna)
-- Don't create a user that already exists (fix: the user can't be that stupid?)
-- The FE is ugly (fix: no, you 🙃 )
+- Don't redeem points a user does not have, please (fix: soon)
+- Don't create a user that already exists (fix: soon?)
+- The FE is ugly (fix: no, you 🙃)
 
 ---
 

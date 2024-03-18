@@ -96,8 +96,8 @@ app.get("/awardPoints/:user/:points", async function(req, res){
     })
 })
 app.get("/redeemPoints/:user/:points", async function(req, res){
-    redeemPoints(req.params.user, req.params.points).then((response) => {
-        console.log(response);
+    redeemPoints(req.params.user, req.params.points).then(() => {
+        // console.log(response);
         res.send("Success");
     }).catch((err)=>{
         console.log(err);
@@ -105,8 +105,8 @@ app.get("/redeemPoints/:user/:points", async function(req, res){
     })
 })
 app.get("/createUser/:user", async function(req, res){
-    createUser(req.params.user).then((response) => {
-        console.log(response);
+    createUser(req.params.user).then(() => {
+        // console.log();
         res.send("Success");
     }).catch((err)=>{
         console.log(err);
