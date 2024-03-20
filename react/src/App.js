@@ -67,12 +67,16 @@ const UserPointsPage = () => {
   
   const handleRedeemPoints = (userId, pointsToRedeem) => {
     fetch(`http://localhost:3030/redeemPoints/${userId}/${pointsToRedeem}`)
-    setReload(!reload)
+    setTimeout(()=>{
+      setReload(!reload)
+    }, [500])
   };
 
   const handleAwardPoints = (userId, pointsToAward) => {
     fetch(`http://localhost:3030/awardPoints/${userId}/${pointsToAward}`)
-    setReload(!reload)
+    setTimeout(()=>{
+      setReload(!reload)
+    }, [500])
   };
 
   function handleKeyPress(e){

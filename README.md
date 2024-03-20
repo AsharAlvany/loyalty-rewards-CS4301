@@ -30,8 +30,8 @@
 
 ## Known Bugs
 
-- Don't redeem points a user does not have, please (fix: soon)
-- Don't create a user that already exists (fix: soon?)
+- ~~Redeeming points from a user that has none results in an error~~ 
+- ~~Don't create a user that already exists (fix: soon?)~~
 - The FE is ugly (fix: no, you 🙃)
 
 ---

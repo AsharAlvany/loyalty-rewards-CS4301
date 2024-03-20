@@ -45,23 +45,33 @@ async function awardPoints(user, amount){
 }
 
 async function redeemPoints(user, amount){
-    const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-    const provider = new ethers.WebSocketProvider(
-        `ws://localhost:8545`
-    );
-    const signer = (await provider.getSigner());
-    const contract = new ethers.Contract(usdcAddress, ABI, signer);
-    contract.redeemPoints(`${user}`, amount);
+    try {
+        const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+        const provider = new ethers.WebSocketProvider(
+            `ws://localhost:8545`
+        );
+        const signer = (await provider.getSigner());
+        const contract = new ethers.Contract(usdcAddress, ABI, signer);
+        await contract.redeemPoints(`${user}`, amount);
+        return "Success";
+    } catch (error) {
+        return "Error"
+    }
 }
 
 async function createUser(user){
-    const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-    const provider = new ethers.WebSocketProvider(
-        `ws://localhost:8545`
-    );
-    const signer = (await provider.getSigner());
-    const contract = new ethers.Contract(usdcAddress, ABI, signer);
-    contract.createUser(`${user}`);
+    try {
+        const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+        const provider = new ethers.WebSocketProvider(
+            `ws://localhost:8545`
+        );
+        const signer = (await provider.getSigner());
+        const contract = new ethers.Contract(usdcAddress, ABI, signer);
+        await contract.createUser(`${user}`);
+        return "Success";
+    } catch (error) {
+        return "Error";
+    }
 }
 
 server = app.listen(3030, function () {
@@ -90,26 +100,28 @@ app.get("/awardPoints/:user/:points", async function(req, res){
     awardPoints(req.params.user, req.params.points).then((response) => {
         console.log(response);
         res.send("Success");
-    }).catch((err)=>{
-        console.log(err);
+    }).catch(()=>{
+        // console.log(err);
         res.send("Error");
     })
 })
 app.get("/redeemPoints/:user/:points", async function(req, res){
-    redeemPoints(req.params.user, req.params.points).then(() => {
-        // console.log(response);
+    try{
+        redeemPoints(req.params.user, req.params.points).then((response) => {
+            // console.log(response);
+            res.send(response);
+        })
+    }
+    catch(error){
         res.send("Success");
-    }).catch((err)=>{
-        console.log(err);
-        res.send("Error");
-    })
+    }
 })
 app.get("/createUser/:user", async function(req, res){
-    createUser(req.params.user).then(() => {
+    createUser(req.params.user).then((response) => {
         // console.log();
-        res.send("Success");
-    }).catch((err)=>{
-        console.log(err);
+        res.send(response);
+    }).catch(()=>{
+        // console.log(err);
         res.send("Error");
     })
 })
