@@ -2,12 +2,12 @@ const ethers = require("ethers");
 const express = require("express");
 const app = express();
 const fs = require("fs");
-const cors=require("cors");
+const cors = require("cors");
 const { type } = require("node:os");
-const corsOptions ={
-   origin:'*', 
-   credentials:true,
-   optionSuccessStatus:200,
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
 }
 
 app.use(cors(corsOptions))
@@ -16,7 +16,7 @@ const file = fs.readFileSync("artifacts/contracts/CryptoPoints.sol/CryptoPoints.
 const json = JSON.parse(file)
 const ABI = json.abi
 
-async function getPoints(user){
+async function getPoints(user) {
     const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
     const provider = new ethers.WebSocketProvider(
         `ws://localhost:8545`
@@ -25,7 +25,7 @@ async function getPoints(user){
     return contract.getPoints(`${user}`);
 }
 
-async function getUsers(){
+async function getUsers() {
     const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
     const provider = new ethers.WebSocketProvider(
         `ws://localhost:8545`
@@ -34,7 +34,7 @@ async function getUsers(){
     return contract.getUsers();
 }
 
-async function awardPoints(user, amount){
+async function awardPoints(user, amount) {
     const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
     const provider = new ethers.WebSocketProvider(
         `ws://localhost:8545`
@@ -44,7 +44,7 @@ async function awardPoints(user, amount){
     contract.awardPoints(`${user}`, amount);
 }
 
-async function redeemPoints(user, amount){
+async function redeemPoints(user, amount) {
     try {
         const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
         const provider = new ethers.WebSocketProvider(
@@ -59,7 +59,7 @@ async function redeemPoints(user, amount){
     }
 }
 
-async function createUser(user){
+async function createUser(user) {
     try {
         const usdcAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
         const provider = new ethers.WebSocketProvider(
@@ -77,50 +77,50 @@ async function createUser(user){
 server = app.listen(3030, function () {
     let host = server.address().address;
     let port = server.address().port;
-}); 
+});
 
 // returns the points of the user in the response variable
-app.get("/getPoints/:user", async function(req, res){
-    getPoints(req.params.user).then((resp) =>{
+app.get("/getPoints/:user", async function (req, res) {
+    getPoints(req.params.user).then((resp) => {
         return resp.toString();
     }).then((response) => {
         console.log(response);
         res.send(response);
     })
 })
-app.get("/getUsers", async function(req, res){
-    getUsers().then((resp) =>{
+app.get("/getUsers", async function (req, res) {
+    getUsers().then((resp) => {
         return JSON.stringify(resp);
     }).then((response) => {
         console.log(response);
         res.send(response);
     })
 })
-app.get("/awardPoints/:user/:points", async function(req, res){
+app.get("/awardPoints/:user/:points", async function (req, res) {
     awardPoints(req.params.user, req.params.points).then((response) => {
         console.log(response);
         res.send("Success");
-    }).catch(()=>{
+    }).catch(() => {
         // console.log(err);
         res.send("Error");
     })
 })
-app.get("/redeemPoints/:user/:points", async function(req, res){
-    try{
+app.get("/redeemPoints/:user/:points", async function (req, res) {
+    try {
         redeemPoints(req.params.user, req.params.points).then((response) => {
             // console.log(response);
             res.send(response);
         })
     }
-    catch(error){
+    catch (error) {
         res.send("Success");
     }
 })
-app.get("/createUser/:user", async function(req, res){
+app.get("/createUser/:user", async function (req, res) {
     createUser(req.params.user).then((response) => {
         // console.log();
         res.send(response);
-    }).catch(()=>{
+    }).catch(() => {
         // console.log(err);
         res.send("Error");
     })
