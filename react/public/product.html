@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Business Directory</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .back-button { padding: 10px; position: absolute; top: 10px; left: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 4px; z-index: 1000; }
+        .header { background-color: #4CAF50; color: white; padding: 20px; text-align: center; }
+        .category { padding: 20px; background-color: #f4f4f4; }
+        .category h2 { color: #4CAF50; }
+        .business-grid { display: flex; flex-wrap: wrap; justify-content: center; margin: 10px 0; }
+        .business { background: white; margin: 10px; padding: 20px; width: calc(50% - 40px); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .business:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        .business h3 { margin-top: 0; }
+        .business p { margin: 5px 0; }
+        .business a { display: inline-block; background-color: #4CAF50; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; }
+        .footer { background-color: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<a href="javascript:history.back()" class="back-button">Back</a>
+
+<div class="header">
+    <h1>Welcome to Your Local Business Directory</h1>
+    <p>Discover restaurants, shops, and services in your area.</p>
+</div>
+
+<div class="category">
+    <h2>Restaurants</h2>
+    <div class="business-grid">
+        <!-- Example Restaurant -->
+        <div class="business">
+            <h3>Restaurant Name</h3>
+            <p>Cuisine: Global</p>
+            <p>Rating: ★★★★☆</p>
+            <a href="menu.html">View Menu</a>
+        </div>
+        <!-- Add more restaurants here -->
+    </div>
+</div>
+
+<div class="category">
+    <h2>Retail Stores</h2>
+    <div class="business-grid">
+        <!-- Example Retail Store -->
+        <div class="business">
+            <h3>Store Name</h3>
+            <p>Specialty: Electronics</p>
+            <p>Rating: ★★★☆☆</p>
+            <a href="catalog.html">View Catalog</a>
+        </div>
+        <!-- Add more retail stores here -->
+    </div>
+</div>
+
+<div class="category">
+    <h2>Services</h2>
+    <div class="business-grid">
+        <!-- Example Service -->
+        <div class="business">
+            <h3>Service Name</h3>
+            <p>Type: Cleaning Services</p>
+            <p>Rating: ★★★★★</p>
+            <a href="services.html">Learn More</a>
+        </div>
+        <!-- Add more services here -->
+    </div>
+</div>
+
+<div class="footer">
+    <p>Contact Us: email@example.com | Phone: (123) 456-7890</p>
+    <p>&copy; 2024 Local Business Directory. All rights reserved.</p>
+</div>
+
+</body>
+</html>
